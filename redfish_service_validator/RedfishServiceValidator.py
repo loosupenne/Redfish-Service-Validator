@@ -42,7 +42,6 @@ standard_out = logging.StreamHandler(sys.stdout)
 standard_out.setLevel(logging.INFO)
 my_logger.addHandler(standard_out)
 
-def validate(argslist=None, configfile=None):
     """Main command
 
     Args:
@@ -128,9 +127,6 @@ def validate(argslist=None, configfile=None):
 
     # start printing config details, remove redundant/private info from print
     my_logger.info('Target URI: ' + args.ip)
-    my_logger.info('\n'.join(
-        ['{}: {}'.format(x, vars(args)[x] if x not in ['password'] else '******') for x in sorted(list(vars(args).keys() - set(['description']))) if vars(args)[x] not in ['', None]]))
-    my_logger.info('Start time: ' + startTick.strftime('%x - %X'))
     my_logger.info("")
 
     # schema and service init
